@@ -29,3 +29,68 @@ where C.region= 'Southeast Asia';
 9. SELECT COUNT(name) AS countries from country;
 
 10. SELECT name FROM country order by surfaceArea desc limit 10;
+
+11. SELECT c.Name, c.Population
+FROM city c
+JOIN country co ON co.Code=c.CountryCode
+WHERE co.name='Japan'
+ORDER BY c.Population DESC
+LIMIT 5;
+
+12. 
+UPDATE country
+SET HeadOfState='Elizabeth II'
+WHERE HeadOfState='Elisabeth II';
+
+13.
+SELECT Name, Code
+FROM country
+WHERE HeadOfState='Elizabeth II'
+
+
+14.
+SELECT *
+FROM (
+    SELECT Name, Population, SurfaceArea, (Population/SurfaceArea) AS Ratio
+    FROM country
+    WHERE Population IS NOT NULL
+    AND Population!=0
+) AS PopulationToAreaRatio
+ORDER BY Ratio
+LIMIT 10;
+
+15. SELECT DISTINCT Language
+FROM countrylanguage;
+
+16. SELECT Name, GNP
+FROM country
+ORDER BY GNP DESC
+LIMIT 10;
+
+17. SELECT DISTINCT Language, COUNT(Language) as Frequency
+FROM countrylanguage
+GROUP BY Language
+ORDER BY Frequency DESC
+LIMIT 10;
+
+18.
+SELECT Name, cl.Percentage
+FROM countrylanguage cl
+JOIN country co ON co.Code=cl.CountryCode
+WHERE cl.Language='German'
+AND cl.Percentage>50
+ORDER BY cl.Percentage DESC;
+
+19.
+SELECT Name, LifeExpectancy
+FROM country
+WHERE LifeExpectancy=(
+    SELECT MIN(LifeExpectancy)
+    FROM country
+    WHERE LifeExpectancy!=0
+
+20. 
+SELECT COUNT(IndepYear)
+FROM country
+WHERE IndepYear IS NOT NULL;
+

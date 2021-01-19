@@ -1,0 +1,31 @@
+SQL tasks
+
+1. SELECT COUNT(*) AS cities FROM city WHERE countrycode='USA';
+
+2. SELECT population, LifeExpectantcy FROM country WHERE name='argentina';
+
+3. SELECT name from country where LifeExpectancy is not null order by lifeexpectancy desc limit 1;
+
+4. SELECT country.capital from country
+    left join city
+        on country.name = city.name
+    WHERE
+        country.name = 'spain';
+
+5. SELECT CL.language FROM countrylanguage CL
+left join country C
+on C.code=cl.countrycode
+where C.region= 'Southeast Asia';
+
+6. SELECT name FROM city where name like 'F%';
+
+7. SELECT COUNT(C.name) as cities from city C
+    left join country COUNTRY
+        on COUNTRY.code= c.countrycode
+    where C.countrycode= 'CHN';
+
+8. SELECT name, population from country where population != 0 AND population is not null order by LifeExpectancy asc limit 1;
+
+9. SELECT COUNT(name) AS countries from country;
+
+10. SELECT name FROM country order by surfaceArea desc limit 10;
